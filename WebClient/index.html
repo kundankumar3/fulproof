@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Click Websites</title>
+</head>
+<body>
+
+    Click counter
+    <hr />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--<script src="./jquery-3.1.0.min.js"></script>-->
+    <script>
+        var uri = 'http://localhost:8080/api/Work';
+
+        $(document).ready(function () {
+
+            $("#Button1").click(function () {
+                $.getJSON(uri + '/GetCountButton1').done(function (data) {
+                    $('#ClickButton1').text('Click count  Button 1 : ' + data);
+                })
+            });
+
+            $("#Button2").click(function () {
+                $.getJSON(uri + '/GetCountButton2').done(function (data) {
+                    $('#ClickButton2').text('Click count  Button 2 : ' + data);
+                })
+            });
+        });
+
+
+    </script>
+
+    <div><ul id="websites"></ul></div>
+
+    <div>
+        <button  type="button" id="Button1" value="Button1" class="btn btn-success" />
+        <label id="ClickButton1">Click count  Button 1 : </label>
+        <br />
+
+        <button  type="button" id="Button2" value="Button2" class="btn btn-success" />
+        <label id="ClickButton2">Click count Button 2 :</label>
+
+
+    </div>
+</body>
+</html>

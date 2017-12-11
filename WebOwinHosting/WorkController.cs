@@ -10,7 +10,9 @@ namespace WebOwinHosting
     public class WorkController : ApiController
     {
         public TelemetryClient client = new TelemetryClient();
-         
+        public static int button1Click = 1;
+        public static int button2Click = 1;
+
         Logger log = LogManager.GetCurrentClassLogger();
         [HttpGet]
         [Route("api/Work/GetSum")]
@@ -20,13 +22,13 @@ namespace WebOwinHosting
             proper.Add("Name", "Adarsh");
             proper.Add("Name1", "Adarsh1");
             proper.Add("Name2", "Adarsh2");
-                      Random rand = new Random(100);
+            Random rand = new Random(100);
             var no1 = rand.Next(10);
             log.Info("no1: " + no1);
             var no2 = rand.Next(200);
             log.Info("no2: " + no2);
             log.Fatal("Fatal");
-            client.TrackTrace ("cc status", SeverityLevel.Error, proper);
+            client.TrackTrace("cc status", SeverityLevel.Error, proper);
             return no1 + no2;
         }
         [HttpGet]
@@ -34,10 +36,10 @@ namespace WebOwinHosting
         public int GetMul(int x)
         {
             Random rand = new Random(100);
-            
+
             var no2 = rand.Next(200);
             return x + no2;
-            
+
         }
         //hi
         [HttpGet]
@@ -85,11 +87,29 @@ namespace WebOwinHosting
             }
             catch (DivideByZeroException ex)
             {
-                                Logger log = LogManager.GetCurrentClassLogger();
+                Logger log = LogManager.GetCurrentClassLogger();
                 log.Trace("div/o error2", ex);
                 throw new Exception("Test exception");
             }
             return 666;
+        }
+
+        public List<string> GetString()
+        {
+            List<string> Users = new List<string>();
+            Users.Add("Sean");
+            Users.Add("Emmy");
+            Users.Add("Cosmo");
+            return Users;
+        }
+
+        public int GetCountButton1()
+        {
+            return button1Click++;
+        }
+        public int GetCountButton2()
+        {
+            return button2Click++;
         }
     }
 }
