@@ -18,30 +18,29 @@ namespace WebOwinHosting
         [Route("api/Work/GetSum")]
         public int GetSum()
         {
-            var proper = new Dictionary<string, string>();
-            proper.Add("Name", "Adarsh");
-            proper.Add("Name1", "Adarsh1");
-            proper.Add("Name2", "Adarsh2");
-            Random rand = new Random(100);
-            var no1 = rand.Next(10);
-            log.Info("no1: " + no1);
-            var no2 = rand.Next(200);
-            log.Info("no2: " + no2);
-            log.Fatal("Fatal");
-            client.TrackTrace("cc status", SeverityLevel.Error, proper);
-            return no1 + no2;
+            Dictionary<string, string> resultDict = new Dictionary<string, string>();
+            Random rnd = new Random();
+            int num1 = rnd.Next(1000);
+            int num2 = rnd.Next(1000);
+            int sum = num1 + num2;
+            resultDict.Add("Number 1: ", num1.ToString());
+            resultDict.Add("Number 2: ", num2.ToString());
+            resultDict.Add("Sum: ", sum.ToString());
+
+            client.TrackTrace("Addition operation", resultDict);
+            return num1 + num2;
         }
+
         [HttpGet]
         [Route("api/Work/GetMul")]
         public int GetMul(int x)
         {
-            Random rand = new Random(100);
-
+            Random rand = new Random();
             var no2 = rand.Next(200);
             return x + no2;
 
         }
-        //hi
+
         [HttpGet]
         [Route("api/Work/GetDiff")]
         public int GetDiff()
@@ -101,6 +100,15 @@ namespace WebOwinHosting
             Users.Add("Emmy");
             Users.Add("Cosmo");
             return Users;
+        }
+
+        [HttpPost]
+        [Route("api/Work/GetLink/{id}")]
+        public int GetLink(int id)
+        {
+
+            Console.WriteLine(id);
+            return id;
         }
 
         public int GetCountButton1()

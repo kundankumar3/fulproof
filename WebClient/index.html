@@ -1,28 +1,49 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Click Websites</title>
+    <title >Click Counter</title>
+    <link href="buttons.css" rel="stylesheet" />
 </head>
 <body>
 
-    Click counter
+    <h3 style="text-align:center">Click counter</h3>
     <hr />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        var appInsights = window.appInsights || function (a) {
+            function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } }
+            var c = { config: a }, d = document, e = window; setTimeout(function () {
+                var b = d.createElement("script");
+                b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js", d.getElementsByTagName("script")[0].parentNode.appendChild(b)
+            });
+            try { c.cookie = d.cookie } catch (a) { } c.queue = [];
+            for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"];
+                f.length;)b("track" + f.pop());
+            if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackEvent"), b("stopTrackEvent"), b("startTrackPage"), b("stopTrackPage"), b("flush"), !a.disableExceptionTracking) {
+                f = "onerror", b("_" + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i }
+            } return c
+        }({
+            instrumentationKey: "2eab39d3-deea-4aff-bffa-f9f372e57426"
+        });
+        window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
+   </script>
+
     <!--<script src="./jquery-3.1.0.min.js"></script>-->
     <script>
-        var uri = 'http://localhost:8080/api/Work';
+        var uri = 'http://localhost:8090/api/Work';
 
         $(document).ready(function () {
 
             $("#Button1").click(function () {
                 $.getJSON(uri + '/GetCountButton1').done(function (data) {
-                    $('#ClickButton1').text('Click count  Button 1 : ' + data);
+                    $('#ClickButton1').text('Click count  : ' + data);
                 })
             });
 
             $("#Button2").click(function () {
                 $.getJSON(uri + '/GetCountButton2').done(function (data) {
-                    $('#ClickButton2').text('Click count  Button 2 : ' + data);
+                    $('#ClickButton2').text('Click count  : ' + data);
                 })
             });
         });
@@ -30,17 +51,31 @@
 
     </script>
 
-    <div><ul id="websites"></ul></div>
+   
 
-    <div>
-        <button  type="button" id="Button1" value="Button1" class="btn btn-success" />
-        <label id="ClickButton1">Click count  Button 1 : </label>
-        <br />
+    <div style="border:dashed; width:50% ;margin :auto;position:relative" >
+        <div style="width: 30%;margin :auto;position:relative;font-size:x-large">
+            <label id="ClickButtonLabel1" mar>Click Button 1  </label>
+            <br />
+            <button id="Button1" class="button button-glow button-circle button-action button-giant">
+                <img src="Facebook-thumbs-up-image-clipart.jpeg" width="45px"/></button>
+            <br />
 
-        <button  type="button" id="Button2" value="Button2" class="btn btn-success" />
-        <label id="ClickButton2">Click count Button 2 :</label>
+            <label id="ClickButton1"style="font-size:x-large">Click count  : </label>
+            </div>
+        </div>
+    <br />
+    <div style="border:dashed; width:50% ;margin :auto;position:relative">
+        <div style="width: 30%;margin :auto;position:relative;font-size:x-large">
+            <label id="ClickButtonLabel1" style="font-size:x-large">Click Button 2  </label>
+            <br />
+            <button id="Button2" class="button button-glow button-circle button-action button-giant"><img src="Facebook-thumbs-up-image-clipart.jpeg" width="45px" /></button>
+            <br />
 
-
+            <label id="ClickButton2" style="font-size:x-large">Click count  : </label>
+        </div>
     </div>
+    
+   
 </body>
 </html>

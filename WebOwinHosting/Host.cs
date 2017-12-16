@@ -7,8 +7,8 @@ namespace WebOwinHosting
     {
         public static void Main(string[] args)
         {
-            WebApp.Start<Startup>("http://+:8080");
-            Console.WriteLine("server started at : http://localhost:8080 ");
+            WebApp.Start<Startup>("http://+:8090");
+            Console.WriteLine("server started at : http://localhost:8090 ");
 
             Console.ReadLine();
         }
