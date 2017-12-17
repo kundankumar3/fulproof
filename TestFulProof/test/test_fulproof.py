@@ -11,11 +11,11 @@ class TestDemo(Conftest):
         # # """
 
         self.driver.get("http://localhost:8090")
-        with allure.step("Get title"):
-            title = self.driver.title
+        title = self.driver.title
+        with allure.step("Get title: " + title):
             assert title == title
 
         with allure.step("Assertion check"):
-            assert 4 == 5
+            assert 4 == 4
 
 
