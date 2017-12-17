@@ -4,7 +4,7 @@ from conftest import Conftest
 
 class TestDemo(Conftest):
 
-    @allure.test("Test launch")
+    @allure.step("Test launch")
     def test_ful_proof(self):
         """
         # get all devices from server
