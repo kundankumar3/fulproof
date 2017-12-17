@@ -4,9 +4,18 @@ from conftest import Conftest
 
 class TestDemo(Conftest):
 
-    @allure.step("check1")
-    def test_get_all_devices(self):
+    @allure.test("Test launch")
+    def test_ful_proof(self):
         """
         # get all devices from server
         # # """
-        self.driver.get("http://localhost:8080/job/fulproof/")
+
+        self.driver.get("http://localhost:8090")
+        with allure.step("Get title"):
+            title = self.driver.title
+            assert title == title
+
+        with allure.step("Assertion check"):
+            assert 4 == 5
+
+
