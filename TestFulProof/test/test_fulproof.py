@@ -10,7 +10,7 @@ class TestDemo(Conftest):
         # get all devices from server
         # # """
 
-        self.driver.get("http://localhost:8090")
+        self.driver.get('file:///C:/Jenkins/workspace/fulproof/WebClient/index.html')
         title = self.driver.title
         with allure.step("Get title: " + title):
             assert title == title
